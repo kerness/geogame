@@ -47,4 +47,6 @@ def home_loggedin(request):
 @login_required(login_url="/login")
 def game(request):
     #TODO - game somehow
+
+
     return render(request, 'main/game.html')
