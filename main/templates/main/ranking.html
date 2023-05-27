@@ -1,31 +1,25 @@
 {% extends 'main/base.html' %}
 {% block title %} Ranking {% endblock %}
-{% block content %} 
-<h1>Ranking!</h1>
-
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Gracz</th>
-      <th scope="col">Wynik</th>
-        <th scope="col">Data</th>
-    </tr>
-  </thead>
-  <tbody>
-      {% for game in games %}
-    <tr>
-      <th scope="row">{{ forloop.counter }}</th>
-      <td>{{ game.player }}</td>
-      <td>{{ game.score }}</td>
-    <td>{{ game.played_at }}</td>
-
-    </tr>
-      {% endfor %}
-  </tbody>
-</table>
-
-
-
+{% block content %}
+    <h1>Ranking!</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Gracz</th>
+            <th scope="col">Wynik</th>
+            <th scope="col">Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ game.player }}</td>
+                <td>{{ game.max_score }}</td>
+                <td>{{ game.played_at }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
