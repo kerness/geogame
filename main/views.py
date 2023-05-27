@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.contrib.auth import login
 from .models import Game
-from django.db.models import Max
+from django.db.models import Max, Sum
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     return render(request, 'main/home.html')
@@ -26,3 +28,12 @@ def ranking(request):
     # TODO: show only the highest score for each user!!
     games = Game.objects.all().order_by('-score').annotate(max_score=Max('score'))
     return render(request, 'main/ranking.html', {'games': games})
+
+
+@login_required(login_url="/login")
+def profile(request):
+    games_count = Game.objects.filter(player=request.user).count()
+    score_count = Game.objects.filter(player=request.user).aggregate(Sum('score'))
+    latest_game = Game.objects.latest('played_at')
+    return render(request, 'main/profile.html',
+                  {'games_count': games_count, 'score_count': score_count, 'last_game': latest_game})

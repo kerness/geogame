@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+{% block title %} Mój profil {% endblock %}
+{% block content %}
+<h1>Mój profil!</h1>
+    <p>Witaj {{ user.username }}</p>
+    <p>Liczba gier {{ games_count }}</p>
+    <p>Liczba punktów {{ score_count.score__sum }}</p>
+    <p>Wynik ostatniej gry {{ last_game.score }} z {{ last_game.played_at }}</p>
+{% endblock %}
