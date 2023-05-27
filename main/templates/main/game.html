@@ -1,7 +1,11 @@
 {% extends 'main/base.html' %}
+{% load static %}
 {% block title %} Home {% endblock %}
 {% block content %}
 
     Tu będzie gra.
+
+    <div id="map" style="height: 600px;"></div>
+    <script src="{% static 'game.js' %}"></script>
 
 {% endblock %}
