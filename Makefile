@@ -12,3 +12,6 @@ migration:
 
 migrate:
 	python manage.py migrate
+
+populate:
+	python manage.py shell < utils/populate_database.py
