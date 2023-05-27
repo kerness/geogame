@@ -42,3 +42,9 @@ def profile(request):
 @login_required(login_url="/login")
 def home_loggedin(request):
     return render(request, 'main/home_loggedin.html')
+
+
+@login_required(login_url="/login")
+def game(request):
+    #TODO - game somehow
+    return render(request, 'main/game.html')
