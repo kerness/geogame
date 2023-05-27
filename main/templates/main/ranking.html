@@ -1,8 +1,31 @@
 {% extends 'main/base.html' %}
-{% block title %} Home {% endblock %}
+{% block title %} Ranking {% endblock %}
 {% block content %} 
-<h1>Cześć!</h1>
-{% if user.is_authenticated %}
-<span class="navbar-text">Witaj {{user.username}}</span>
-{% endif %}
+<h1>Ranking!</h1>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Gracz</th>
+      <th scope="col">Wynik</th>
+        <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for game in games %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ game.player }}</td>
+      <td>{{ game.score }}</td>
+    <td>{{ game.played_at }}</td>
+
+    </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+
 {% endblock %}
