@@ -37,3 +37,8 @@ def profile(request):
     latest_game = Game.objects.latest('played_at')
     return render(request, 'main/profile.html',
                   {'games_count': games_count, 'score_count': score_count, 'last_game': latest_game})
+
+
+@login_required(login_url="/login")
+def home_loggedin(request):
+    return render(request, 'main/home_loggedin.html')
