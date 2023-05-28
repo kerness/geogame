@@ -44,11 +44,13 @@ const locDict ={
 };
 var locGame = JSON.parse(JSON.stringify((locDict)));
 var loc;
+var question = 1
+var score = 0
 nextQuestion();
 var polyline;
 var distance;
-var score = 0
-var question = 1
+
+
 var currPos;
 
 function nextQuestion(){
@@ -60,8 +62,9 @@ function nextQuestion(){
     max = Math.floor(locGame.location.length-1);
     currPos = Math.floor(Math.random() * (max - min + 1)) + min;
     loc = locGame.location[currPos];
-    console.log(currPos);
-    console.log(loc.name);
+    document.getElementById("locationName").innerHTML = loc.name;
+    document.getElementById("roundCount").innerHTML = "Runda: "+question+"/4";
+    document.getElementById("currScore").innerHTML = "Wynik: "+score;
 
 }
 
@@ -83,13 +86,10 @@ function onSubmitClick() {
     if (marker && question < 5 ) {
 
         distance = getDistance([guess.lat, guess.lng], [loc.lat, loc.lon]) / 1000
-        console.log(distance)
         var scoreRound = 500-distance/2;
         if (scoreRound < 0)
             scoreRound = 0;
         score += Math.round(scoreRound);
-        console.log(score)
-
 
         var lineCoord = [[guess.lat, guess.lng], [loc.lat, loc.lon]];
         polyline = L.polyline(lineCoord, {color: 'red'}).addTo(map);
@@ -129,8 +129,9 @@ function onSubmitClick() {
         map.setView([loc.lat, loc.lon], zoom);
         if(question === 4)
         {
-            console.log("Koniec gry! Wynik to: "+ score)
             console.log(score)
+            document.getElementById("nextGame").innerHTML = "Koniec gry! Twój wynik to: "+score+"\nAby rozpocząć nową grę, naciśnij przycisk 'Nowa Gra'";
+            question++;
         }
 
     }
@@ -149,6 +150,7 @@ function onNextClick(){
         clearMap();
         question++;
         nextQuestion();
+        map.setView([51.505, -0.09], 1);
     }
 
 }
@@ -175,9 +177,9 @@ function onNewGame(){
     score = 0;
     question = 1;
     locGame = JSON.parse(JSON.stringify((locDict)));
-    console.log(locGame.location.length);
     clearMap();
     nextQuestion();
+    document.getElementById("nextGame").innerHTML = "";
     map.setView([51.505, -0.09], 1);
 
 }

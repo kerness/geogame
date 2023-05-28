@@ -3,7 +3,12 @@
 {% block title %} Home {% endblock %}
 {% block content %}
 
-    Tu będzie gra.
+    <div>
+        <p id="roundCount"> </p>
+        <p id="locationName"></p>
+        <p id="currScore"> </p>
+        <p id="nextGame" ></p>
+    </div>
 
     <div id="map" style="height: 600px;"></div>
     <script src="{% static 'game.js' %}"></script>
