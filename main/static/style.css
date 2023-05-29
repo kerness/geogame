@@ -1,39 +1,43 @@
 :root {
-  --main_dark: #285430;
-  --text_light: #E5D9B6;
-  --secondary: #A4BE7B;
+    --main_dark: #285430;
+    --text_light: #E5D9B6;
+    --secondary: #A4BE7B;
 }
 
-.navbar{
-  background-color: var(--main_dark);
+.navbar {
+    background-color: var(--main_dark);
 }
 
 .nav-link {
     color: var(--text_light);
 }
 
-.container-fluid{
-  background-color: var(--main_dark);
+.navbar-text {
+    color: var(--text_light);
+}
+
+.container-fluid {
+    background-color: var(--main_dark);
 }
 
 .btn {
-  color: var(--text_light);
-  background-color: var(--main_dark);
-  border-color: var(--main_dark);
+    color: var(--text_light);
+    background-color: var(--main_dark);
+    border-color: var(--main_dark);
 }
 
 .container {
-  padding-top: 100px;
+    padding-top: 100px;
 }
 
 h1 {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 #centered {
-  text-align: center;
+    text-align: center;
 }
 
 .d-grid {
-  padding-top: 50px;
+    padding-top: 50px;
 }
