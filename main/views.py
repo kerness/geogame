@@ -44,7 +44,7 @@ def profile(request):
 
 @login_required(login_url="/login")
 def home_loggedin(request):
-    #last_game = Game.objects.filter(player=request.user).order_by('-played_at')[0]
+    # last_game = Game.objects.filter(player=request.user).order_by('-played_at')[0]
     return render(request, 'main/home_loggedin.html')
 
 
