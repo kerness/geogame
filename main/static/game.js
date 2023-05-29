@@ -129,9 +129,12 @@ function onSubmitClick() {
         map.setView([loc.lat, loc.lon], zoom);
         if(question === 4)
         {
-            console.log(score)
+            //console.log(score)
             document.getElementById("nextGame").innerHTML = "Koniec gry! Twój wynik to: "+score+"\nAby rozpocząć nową grę, naciśnij przycisk 'Nowa Gra'";
             question++;
+            document.getElementById("new_game").value = score
+            var roundScore = document.getElementById("new_game").value
+            console.log(roundScore);
         }
 
     }
