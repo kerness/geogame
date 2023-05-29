@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm
+from .forms import RegisterForm, GameForm
 from django.contrib.auth import login
 from .models import Game
-from django.db.models import Max, Sum
+from django.db.models import Max, Sum, OuterRef, Subquery
 from django.contrib.auth.decorators import login_required
 
 
@@ -25,8 +25,11 @@ def sign_up(request):
 
 
 def ranking(request):
-    # TODO: show only the highest score for each user!!
-    games = Game.objects.all().order_by('-score').annotate(max_score=Max('score'))
+    played_at_subquery = Game.objects.filter(player=OuterRef('player')).order_by('-score', '-played_at').values(
+        'played_at')[:1]
+    games = Game.objects.values('player').annotate(max_score=Max('score'),
+                                                   played_at=Subquery(played_at_subquery)).order_by('-max_score')
+
     return render(request, 'main/ranking.html', {'games': games})
 
 
@@ -41,12 +44,20 @@ def profile(request):
 
 @login_required(login_url="/login")
 def home_loggedin(request):
+    # last_game = Game.objects.filter(player=request.user).order_by('-played_at')[0]
     return render(request, 'main/home_loggedin.html')
 
 
 @login_required(login_url="/login")
 def game(request):
-    #TODO - game somehow
+    if request.method == 'POST':
+        form = GameForm(request.POST)
+        if form.is_valid():
+            form_game = form.save(commit=False)
+            form_game.player = request.user
+            form_game.save()
+            return redirect('/game')
+    else:
+        form = GameForm()
 
-
-    return render(request, 'main/game.html')
+    return render(request, 'main/game.html', {'form': form})

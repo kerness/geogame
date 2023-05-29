@@ -1,7 +1,9 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %} Home {% endblock %}
 {% block content %}
+
 
     <div>
         <p id="roundCount"> </p>
@@ -18,5 +20,10 @@
         <button  id="new_game" type="submit" class="btn btn-success" onclick="onNewGame()" >Nowa gra</button>
     </div>
 
+
+    <form method="post">
+        {% csrf_token %}{{ form|crispy }}
+        <button type="submit" class="btn btn-success">Zapisz</button>
+    </form>
 
 {% endblock %}
