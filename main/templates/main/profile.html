@@ -6,4 +6,25 @@
     <p>Liczba gier {{ games_count }}</p>
     <p>Liczba punktów {{ score_count.score__sum }}</p>
     <p>Wynik ostatniej gry {{ last_game.score }} z {{ last_game.played_at }}</p>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Gracz</th>
+            <th scope="col">Wynik</th>
+            <th scope="col">Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in my_games %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ game.player }}</td>
+                <td>{{ game.score }}</td>
+                <td>{{ game.played_at }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
