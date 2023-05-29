@@ -34,7 +34,6 @@ def ranking(request):
         'played_at')[:1]
     games = Game.objects.values('player').annotate(max_score=Max('score'),
                                                    played_at=Subquery(played_at_subquery)).order_by('-max_score')
-
     return render(request, 'main/ranking.html', {'games': games})
 
 
