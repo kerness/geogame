@@ -11,7 +11,6 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Gracz</th>
             <th scope="col">Wynik</th>
             <th scope="col">Data</th>
         </tr>
@@ -20,7 +19,6 @@
         {% for game in my_games %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ game.player }}</td>
                 <td>{{ game.score }}</td>
                 <td>{{ game.played_at }}</td>
             </tr>

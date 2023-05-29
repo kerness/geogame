@@ -40,7 +40,7 @@ def ranking(request):
 
 @login_required(login_url="/login")
 def profile(request):
-    my_games = Game.objects.filter(player=request.user)
+    my_games = Game.objects.filter(player=request.user).order_by('-score')
     games_count = Game.objects.filter(player=request.user).count()
     score_count = Game.objects.filter(player=request.user).aggregate(Sum('score'))
     latest_game = Game.objects.latest('played_at')
