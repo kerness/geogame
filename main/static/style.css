@@ -68,11 +68,12 @@ h1 {
 }
 .gameNav {
     display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .gameNav button:last-child {
-  margin-left: auto;
+    margin-left: auto;
+    top: 100px;
 }
 
 /*ranking*/
@@ -80,12 +81,9 @@ h1 {
 tr{
     color: var(--main_dark);
 }
-tr td{
-    padding-bottom: 50px;
-}
 
 .rankRows{
-    background: #E5D9B6;
+    background: var(--text_light);
 
 }
 .rankRows td{
@@ -103,5 +101,43 @@ tr td{
 
 }
 
+/*profil*/
+
+.userInfo{
+    font-size: 28px;
+    color: var(--main_dark);
+    width: 100%;
+    height: 250px;
+    background: var(--text_light);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.userInfo div{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.userInfo div:first-child {
+    order: 1;
+    flex: 0 0 50%;
+}
+
+.userInfo div:nth-child(2) {
+    order: 2;
+    flex: 0 0 50%;
+}
+
+.userInfo div:last-child {
+    order: 3;
+    flex: 0 0 100%;
+}
+#nameHeader{
+    font-size: 28px;
+    text-align: center;
+    color: var(--main_dark);
+}
 
 
