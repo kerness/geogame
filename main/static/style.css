@@ -41,3 +41,48 @@ h1 {
 .d-grid {
     padding-top: 50px;
 }
+.gameInfo {
+     font-size: 32px;
+    color: var(--main_dark);
+  display: flex;
+  justify-content: space-between;
+}
+
+.gameInfo p:first-child {
+  text-align: left;
+}
+
+.gameInfo p:nth-child(2) {
+  text-align: center;
+    font-size: 36px;
+}
+
+.gameInfo p:last-child {
+  text-align: right;
+}
+
+#nextGame{
+    text-align: center;
+    font-size: 32px;
+    color: var(--main_dark);
+}
+.gameNav {
+    display: flex;
+  justify-content: space-between;
+}
+
+/*.gameNav button:first-child {*/
+/*  justify-self: flex-start;*/
+/*}*/
+
+/*!*.gameNav button:nth-child(2) {*!*/
+/*!*  text-align: center;*!*/
+/*!*}*!*/
+
+.gameNav button:last-child {
+  margin-left: auto;
+}
+
+
+
+

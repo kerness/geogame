@@ -5,16 +5,16 @@
 {% block content %}
 
 
-    <div>
+    <div class="gameInfo">
         <p id="roundCount"> </p>
         <p id="locationName"></p>
-        <p id="currScore"> </p>
-        <p id="nextGame" ></p>
+        <p id="currScore">Wynik: 0 </p>
     </div>
+    <p id="nextGame" ></p>
 
     <div id="map" style="height: 600px;"></div>
     <script src="{% static 'game.js' %}"></script>
-    <div style="justify-content: center;">
+    <div class="gameNav" >
         <button  id="game_submit" type="submit" class="btn btn-success" onclick="onSubmitClick()" >Zatwierdź</button>
         <button  id="next_map" type="submit" class="btn btn-success" onclick="onNextClick()" >Następny</button>
         <button  id="new_game" type="submit" class="btn btn-success" onclick="onNewGame()" >Nowa gra</button>
