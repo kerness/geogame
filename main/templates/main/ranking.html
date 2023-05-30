@@ -1,11 +1,11 @@
 {% extends 'main/base.html' %}
 {% block title %} Ranking {% endblock %}
 {% block content %}
-    <h1>Ranking</h1>
-    <table class="table table-striped">
+    <h1 style="color: var(--main_dark); text-align: center">Ranking</h1>
+    <table id="ranking" class="table ">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Poz.</th>
             <th scope="col">Gracz</th>
             <th scope="col">Wynik</th>
             <th scope="col">Data</th>
@@ -13,7 +13,8 @@
         </thead>
         <tbody>
         {% for game in games %}
-            <tr>
+
+            <tr class="rankRows">
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ game.player }}</td>
                 <td>{{ game.max_score }}</td>
