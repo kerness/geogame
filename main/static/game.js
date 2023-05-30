@@ -1,8 +1,9 @@
-var map = L.map('map').setView([51.505, -0.09], 1);
+var map = L.map('map').setView([25, 0], 2);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    dragging: false
 }).addTo(map);
 
 var marker;
@@ -10,36 +11,36 @@ var guess;
 var markerLoc;
 const locDict ={
   location:
-      [{  name: "Wielka Brytania",
-          lat : 52.0,
-          lon : -1.0},
-      {  name: "Niemcy",
-          lat : 51.17,
-          lon : 10.0},
-      {  name: "Polska",
-          lat : 51.91,
-          lon : 19.13},
-      {  name: "Czechy",
-          lat : 49.8,
-          lon : 15.47},
-      {  name: "Włochy",
-          lat : 41.29,
-          lon : 12.57},
-      {  name: "Brazylia",
-          lat : -14.24,
-          lon : -53.18},
-      {  name: "Rosja",
-          lat : 55.0,
-          lon : 103.0},
-      {  name: "USA",
-          lat : 37.6,
-          lon : -95.67},
-      {  name: "Argentyna",
-          lat : -38.42,
-          lon : -63.6},
-      {  name: "Australia",
-          lat : -26.44,
-          lon : 133.28}
+      [{  name: "Londyn",
+          lat : 51.5,
+          lon : -0.13},
+      {  name: "Kijów",
+          lat : 50.45,
+          lon : 30.52},
+      {  name: "Kraków",
+          lat : 50.06,
+          lon : 19.94},
+      {  name: "Praga",
+          lat : 50.07,
+          lon : 14.41},
+      {  name: "Ułan Bator",
+          lat : 47.92,
+          lon : 106.92},
+      {  name: "Nowy Orlean",
+          lat : 29.95,
+          lon : -90.07},
+      {  name: "Torronto",
+          lat : 43.65,
+          lon : -79.34},
+      {  name: "Tokio",
+          lat : 35.65,
+          lon : 139.82},
+      {  name: "Hawana",
+          lat : 23.11,
+          lon : -82.36},
+      {  name: "Melbourne",
+          lat : -37.84,
+          lon : 144.94}
       ]
 };
 var locGame = JSON.parse(JSON.stringify((locDict)));
@@ -64,7 +65,6 @@ function nextQuestion(){
     loc = locGame.location[currPos];
     document.getElementById("locationName").innerHTML = loc.name;
     document.getElementById("roundCount").innerHTML = "Runda: "+question+"/4";
-    document.getElementById("currScore").innerHTML = "Wynik: "+score;
 
 }
 
@@ -139,6 +139,7 @@ function onSubmitClick() {
             });
             console.log(roundScore);
         }
+        document.getElementById("currScore").innerHTML = "Wynik: "+score;
 
     }
 }
@@ -156,7 +157,7 @@ function onNextClick(){
         clearMap();
         question++;
         nextQuestion();
-        map.setView([51.505, -0.09], 1);
+        map.setView([25, 0], 2);
     }
 
 }
@@ -186,7 +187,7 @@ function onNewGame(){
     clearMap();
     nextQuestion();
     document.getElementById("nextGame").innerHTML = "";
-    map.setView([51.505, -0.09], 1);
+    map.setView([25, -0], 2);
 
 }
 

@@ -1,13 +1,15 @@
 {% extends 'main/base.html' %}
 {% block title %} Mój profil {% endblock %}
 {% block content %}
-<h1>Mój profil</h1>
-    <p>Witaj {{ user.username }}</p>
-    <p>Liczba gier {{ games_count }}</p>
-    <p>Liczba punktów {{ score_count.score__sum }}</p>
-    <p>Wynik ostatniej gry {{ last_game.score }} z {{ last_game.played_at }}</p>
-
-    <table class="table table-striped">
+<h1 style="text-align: center">Mój profil</h1>
+    <p id="nameHeader">Witaj {{ user.username }}, oto twoje statystyki</p>
+    <div class="userInfo">
+    <div>Liczba gier {{ games_count }}</div>
+    <div>Liczba punktów {{ score_count.score__sum }}</div>
+    <div>Wynik ostatniej gry {{ last_game.score }} z {{ last_game.played_at }}</div>
+    </div>
+    <p id="nameHeader">Tutaj znajduje się lista twoich gier</p>
+    <table class="table table">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -17,7 +19,7 @@
         </thead>
         <tbody>
         {% for game in my_games %}
-            <tr>
+            <tr class="rankRows">
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ game.score }}</td>
                 <td>{{ game.played_at }}</td>
