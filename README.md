@@ -1,5 +1,6 @@
 # geogame
 
+Guess the location!
 
 Local dev setup:
 
